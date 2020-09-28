@@ -13,12 +13,6 @@ const session = require('express-session');                 // 7
 const passport = require("passport");
 const app = express();
 
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
-
 ////////////////////////////////////////////////////////////////////// Middleware
 app.use(helmet({contentSecurityPolicy: false}))
 
@@ -67,7 +61,6 @@ app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/' }),
     function(req, res) {
         // Successful authentication, redirect home.
-        console.log("Hello " + req.user.username);
         req.session.login = req.user.username;
         res.redirect('/');
 });
@@ -78,9 +71,15 @@ app.get("/logout", (request, response) => {
     response.redirect('/');
 });
 
-// send the array of dreams to the webpage
-app.get("/dreams", (request, response) => {
-  response.json(dreams);
+// send user's saved team
+app.get("/myteam", (request, response) => {
+    console.log("All data for " + request.session.login + ": ")
+
+    collection.findOne({ login: request.session.login })
+        .then(result => {
+            console.log(result);
+            response.json(result);
+        });
 });
 
 app.post("/add", bodyParser.json(), (request, response) => {
@@ -88,11 +87,10 @@ app.post("/add", bodyParser.json(), (request, response) => {
         { login: request.session.login },
         { $set: {
             login: request.session.login,
-            team: request.body.dream //TODO replace this
+            team: request.body
             }
         },
         { upsert: true });
-    dreams.push(request.session.login + " " + request.body.dream);
     response.json(request.body);
 });
 

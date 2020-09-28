@@ -13,10 +13,10 @@
 
     <link id="favicon" rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/style.css">
-    <script src="/main.js" defer></script>
+    <script src="/main.js"></script>
   </head>
   
-  <body>
+  <body onload="main()">
     <header>
       <h1>Build Your Team</h1>
       <h1><a href="/logout">Log Out</a></h1>
@@ -25,17 +25,27 @@
     <main>
       <form>
         <label>
-          New Dream
-          <input name="dream" type="text" maxlength="100" required placeholder="Dreams!">
+          New Team
+          <input id="inputMember1" type="text" maxlength="100" required placeholder="Member 1">
+          <input id="inputMember2" type="text" maxlength="100" required placeholder="Member 2">
+          <input id="inputMember3" type="text" maxlength="100" required placeholder="Member 3">
+          <input id="inputMember4" type="text" maxlength="100" required placeholder="Member 4">
+          <input id="inputMember5" type="text" maxlength="100" required placeholder="Member 5">
+          <input id="inputMember6" type="text" maxlength="100" required placeholder="Member 6">
         </label>
-        <button type="submit" id="submit-dream">Add Dream</button>
+        <button id="submitButton">Add Team</button>
       </form>
 
-      <section class="dreams">
-        <ul id="dreams">
-          <em>loading dreams&hellip;</em>
-        </ul>
-      </section>
+      <!-- TODO display team somehow-->
+      <div>
+        <h3 id="displayMember1"></h3>
+        <h3 id="displayMember2"></h3>
+        <h3 id="displayMember3"></h3>
+        <h3 id="displayMember4"></h3>
+        <h3 id="displayMember5"></h3>
+        <h3 id="displayMember6"></h3>
+      </div>
+
     </main>
   </body>
 </html>
