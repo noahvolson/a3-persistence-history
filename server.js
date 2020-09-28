@@ -84,8 +84,16 @@ app.get("/dreams", (request, response) => {
 });
 
 app.post("/add", bodyParser.json(), (request, response) => {
-  dreams.push(request.session.login + " " + request.body.dream);
-  response.json(request.body);
+    collection.updateOne(
+        { login: request.session.login },
+        { $set: {
+            login: request.session.login,
+            team: request.body.dream //TODO replace this
+            }
+        },
+        { upsert: true });
+    dreams.push(request.session.login + " " + request.body.dream);
+    response.json(request.body);
 });
 
 // listen for requests
@@ -104,5 +112,4 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 let collection = null;
 client.connect(err => {
     collection = client.db("testDatabase").collection("testCollection");
-    //console.log(collection);
 });
