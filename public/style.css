@@ -1,1 +1,14 @@
 /* this file is loaded by index.html and styles the page */
+
+.displayEntry {
+    border: 1px solid black;
+    display: flex;
+    padding: 10px;
+}
+
+.thumbnail {
+    opacity: 75%;
+    padding-right: 75px;
+    width: 56px;
+    height: auto;
+}

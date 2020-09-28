@@ -38,7 +38,7 @@ const submit = function (e) {
 
 function updateDocumentTeam( memberArr ) {
   for (let i = 1; i < 7; i++) {
-    document.getElementById("displayMember" + i).innerText = memberArr[i - 1]
+    document.getElementById("displayMemberName" + i).innerText = memberArr[i - 1]
   }
 }
 

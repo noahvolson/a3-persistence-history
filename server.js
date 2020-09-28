@@ -1,3 +1,6 @@
+// pokemon json files from: https://github.com/fanzeyi/pokemon.json
+const pokedex = require("./json/pokedex.json");
+
 const express = require("express");
 
 // added middleware
