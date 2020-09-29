@@ -1,7 +1,7 @@
 ## Pokemon Team Builder
 Noah Olson - noahvolson - nvolson
 
-Glitch Link: http://a3-noah-olson.glitch.me
+Glitch Link: https://a3-noah-olson.glitch.me
 
 Goal: This application gives users a platform to theorycraft Pokemon teams 
 
