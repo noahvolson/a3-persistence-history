@@ -13,49 +13,63 @@
 
     <link id="favicon" rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
     <script src="/main.js"></script>
   </head>
   
   <body onload="main()">
     <header>
-      <h1>Build Your Team</h1>
-      <h1><a href="/logout">Log Out</a></h1>
+      <h3 id="playerLine"></h3>
+      <br>
+      <h5>Build a team for your next pokemon adventure!</h5>
+      <br>
+
+
+      <div id="themeBox" class="nes-container with-title">
+        <span class="title">Page Theme</span>
+        <label><input onclick="updateTheme()" type="radio" class="nes-radio" name="theme" checked /><span>Water</span></label>
+        <label><input onclick="updateTheme()" type="radio" class="nes-radio" name="theme" /><span>Grass</span></label>
+        <label><input onclick="updateTheme()" type="radio" class="nes-radio" name="theme" /><span>Fire</span></label>
+        <label><input onclick="updateTheme()" type="radio" class="nes-radio" name="theme" /><span>Electric</span></label>
+
+      </div>
+
+      <h3 id="logOut"><a href="/logout">Log Out</a></h3>
     </header>
 
     <main>
-      <form>
-        <label>
-          New Team
+      <div id=newTeamContainer class="nes-container with-title">
+        <div id="teamInputBar">
           <input id="inputMember1" type="text" maxlength="100" required placeholder="Member 1">
           <input id="inputMember2" type="text" maxlength="100" required placeholder="Member 2">
           <input id="inputMember3" type="text" maxlength="100" required placeholder="Member 3">
           <input id="inputMember4" type="text" maxlength="100" required placeholder="Member 4">
           <input id="inputMember5" type="text" maxlength="100" required placeholder="Member 5">
           <input id="inputMember6" type="text" maxlength="100" required placeholder="Member 6">
-        </label>
-        <button id="submitButton">Add Team</button>
-      </form>
+        </div>
 
-      <!-- TODO display team somehow-->
-      <div>
+        <button class="nes-btn is-primary" id="submitButton">Add Team</button>
+      </div>
 
+      <div id="teamDisplay" class="nes-container">
         <div class="displayEntry">
-          <img id="displayMemberImg1" class="thumbnail" src="/assets/000.png" alt="loading..."><h3 id="displayMemberName1"></h3>
+          <img id="displayMemberImg1" class="thumbnail" src="/assets/0.png" alt="loading..."><h3 id="displayMemberName1"></h3>
         </div>
         <div class="displayEntry">
-          <img id="displayMemberImg2" class="thumbnail" src="/assets/000.png" alt="loading..."><h3 id="displayMemberName2"></h3>
+          <img id="displayMemberImg2" class="thumbnail" src="/assets/0.png" alt="loading..."><h3 id="displayMemberName2"></h3>
         </div>
         <div class="displayEntry">
-          <img id="displayMemberImg3" class="thumbnail" src="/assets/000.png" alt="loading..."><h3 id="displayMemberName3"></h3>
+          <img id="displayMemberImg3" class="thumbnail" src="/assets/0.png" alt="loading..."><h3 id="displayMemberName3"></h3>
         </div>
         <div class="displayEntry">
-          <img id="displayMemberImg4" class="thumbnail" src="/assets/000.png" alt="loading..."><h3 id="displayMemberName4"></h3>
+          <img id="displayMemberImg4" class="thumbnail" src="/assets/0.png" alt="loading..."><h3 id="displayMemberName4"></h3>
         </div>
         <div class="displayEntry">
-          <img id="displayMemberImg5" class="thumbnail" src="/assets/000.png" alt="loading..."><h3 id="displayMemberName5"></h3>
+          <img id="displayMemberImg5" class="thumbnail" src="/assets/0.png" alt="loading..."><h3 id="displayMemberName5"></h3>
         </div>
         <div class="displayEntry">
-          <img id="displayMemberImg6" class="thumbnail" src="/assets/000.png" alt="loading..."><h3 id="displayMemberName6"></h3>
+          <img id="displayMemberImg6" class="thumbnail" src="/assets/0.png" alt="loading..."><h3 id="displayMemberName6"></h3>
         </div>
 
       </div>

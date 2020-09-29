@@ -91,7 +91,8 @@ app.post("/add", bodyParser.json(), (request, response) => {
     let updatedFields = {
         login: request.session.login,
         team: request.body,
-        teamIds: convertedIds
+        teamIds: convertedIds,
+        favoriteType: "Psychic"
     }
 
     collection.updateOne(

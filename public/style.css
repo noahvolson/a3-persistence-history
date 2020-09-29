@@ -1,14 +1,53 @@
 /* this file is loaded by index.html and styles the page */
 
-.displayEntry {
-    border: 1px solid black;
+body {
     display: flex;
-    padding: 10px;
+}
+
+header {
+    padding: 20px;
+    width: 400px;
+}
+
+.displayEntry {
+    display: flex;
 }
 
 .thumbnail {
     opacity: 90%;
     padding-right: 75px;
-    width: 56px;
-    height: auto;
+}
+
+#newTeamContainer {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+input {
+    font-size: 14px !important;
+    width: 128px;
+}
+
+#teamInputBar {
+    margin-bottom: 10px;
+}
+
+#teamDisplay {
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+#logOut {
+    padding-top: 20px;
+}
+
+#login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loginBody {
+    background-color: #DEF3FD;
 }
