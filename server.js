@@ -76,25 +76,30 @@ app.get("/logout", (request, response) => {
 
 // send user's saved team
 app.get("/myteam", (request, response) => {
-    console.log("All data for " + request.session.login + ": ")
 
     collection.findOne({ login: request.session.login })
         .then(result => {
-            console.log(result);
             response.json(result);
         });
 });
 
 app.post("/add", bodyParser.json(), (request, response) => {
+
+    let convertedIds = [];
+    request.body.forEach(element => convertedIds.push(getIdFromName(element)));
+
+    let updatedFields = {
+        login: request.session.login,
+        team: request.body,
+        teamIds: convertedIds
+    }
+
     collection.updateOne(
         { login: request.session.login },
-        { $set: {
-            login: request.session.login,
-            team: request.body
-            }
-        },
+        { $set: updatedFields },
         { upsert: true });
-    response.json(request.body);
+
+    response.json(updatedFields);
 });
 
 // listen for requests
@@ -114,3 +119,12 @@ let collection = null;
 client.connect(err => {
     collection = client.db("testDatabase").collection("testCollection");
 });
+
+////////////////////////////////////////////////////////////////////// Helper Functions
+function getIdFromName(name) {
+    for (let i = 0; i < Object.keys(pokedex).length; i++) {
+        if (pokedex[i].name.english.toUpperCase() === name.toUpperCase()) {
+            return pokedex[i].id;
+        }
+    }
+}

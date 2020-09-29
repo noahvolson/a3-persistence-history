@@ -8,7 +8,7 @@ function main() {
   fetch("/myteam")
       .then(response => response.json())
       .then(json => {
-        updateDocumentTeam(json.team);
+        updateDocumentTeam(json.team, json.teamIds);
       });
 }
 
@@ -29,16 +29,22 @@ const submit = function (e) {
     }
   })
       .then(response => response.json())
-      .then(arr => {
-        updateDocumentTeam(arr)
+      .then(json => {
+        updateDocumentTeam(json.team, json.teamIds);
       });
 
   console.log("TEAM SUBMITTED");
 }
 
-function updateDocumentTeam( memberArr ) {
-  for (let i = 1; i < 7; i++) {
-    document.getElementById("displayMemberName" + i).innerText = memberArr[i - 1]
+function updateDocumentTeam( memberArr, idArr ) {
+  for (let i = 1; i < memberArr.length + 1; i++) {
+    document.getElementById("displayMemberName" + i).innerText = memberArr[i - 1];
+    if (idArr[i - 1] === null) {
+      document.getElementById("displayMemberImg" + i).src = "/assets/000.png";
+    }
+    else {
+      document.getElementById("displayMemberImg" + i).src = "/assets/" + idArr[i - 1].toString().padStart(3,'0') + ".png";
+    }
   }
 }
 
