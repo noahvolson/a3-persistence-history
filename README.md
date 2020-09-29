@@ -1,5 +1,5 @@
 ## Pokemon Team Builder
-####Noah Olson - noahvolson - nvolson
+Noah Olson - noahvolson - nvolson
 
 Glitch Link: http://a3-noah-olson.glitch.me
 
